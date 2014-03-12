@@ -1,3 +1,3 @@
 #!/bin/bash -ex
 
-/srv/elasticsearch/bin/elasticsearch -f
+exec /srv/elasticsearch/bin/elasticsearch -f
