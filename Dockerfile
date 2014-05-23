@@ -28,7 +28,9 @@ ADD elasticsearch.yml /srv/elasticsearch/config/
 RUN mkdir -p /data/elasticsearch
 
 RUN mkdir -p /etc/service/elasticsearch
+RUN mkdir -p /var/log/kazoup
 ADD run-elasticsearch.sh /etc/service/elasticsearch/run
+ADD log-elasticsearch.sh /etc/service/elasticsearch/log/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
