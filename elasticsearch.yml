@@ -3,3 +3,4 @@ path.logs: /srv/kazoup/kazoup-logs/elasticsearch.log
 discovery.zen.ping.multicast.enabled: false
 discovery.zen.ping.unicast.hosts: []
 indices.index_buffer_size: 30%
+cluster.name: kazoup
