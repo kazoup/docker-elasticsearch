@@ -41,6 +41,8 @@ RUN mkdir -p /var/log/kazoup
 ADD docker/run-elasticsearch.sh /etc/service/elasticsearch/run
 ADD docker/log-elasticsearch.sh /etc/service/elasticsearch/log/run
 
+ADD docker/lifecycle /srv/kazoup/lifecycle
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
