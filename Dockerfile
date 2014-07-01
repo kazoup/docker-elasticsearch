@@ -3,7 +3,12 @@ FROM phusion/baseimage:0.9.8
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y wget openjdk-6-jre
+# See https://github.com/jplock/docker-oracle-java7/blob/master/Dockerfile
+RUN apt-get install -y python-software-properties
+RUN add-apt-repository ppa:webupd8team/java -y
+RUN apt-get update
+RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+RUN apt-get install -y oracle-java7-installer
 
 # add the kazoup dev ssh key
 ADD docker/id_rsa.kazoup_dev.pub /tmp/id_rsa.kazoup_dev.pub
