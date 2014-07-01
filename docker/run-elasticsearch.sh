@@ -9,9 +9,9 @@ TOTAL_MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 HALF_MEMORY=$(( ${TOTAL_MEMORY} / 2 ))
 export ES_HEAP_SIZE=${HALF_MEMORY}
 
-# Uncomment the following lines to limit the memory used by elasticsearch
-# MAX_MEMORY=4000000
-# export ES_HEAP_SIZE=$(( ${ES_HEAP_SIZE} > ${MAX_MEMORY} ? ${MAX_MEMORY} : ${ES_HEAP_SIZE} ))
+# See: http://makina-corpus.com/blog/metier/2014/elasticsearch-when-giving-it-more-memory-causes-more-outofmemory-errror
+MAX_MEMORY=4000000000
+export ES_HEAP_SIZE=$(( ${ES_HEAP_SIZE} > ${MAX_MEMORY} ? ${MAX_MEMORY} : ${ES_HEAP_SIZE} ))
 
 MIN_MEMORY=1500000000
 export ES_HEAP_SIZE=$(( ${ES_HEAP_SIZE} > ${MIN_MEMORY} ? ${ES_HEAP_SIZE} : ${MIN_MEMORY} ))
