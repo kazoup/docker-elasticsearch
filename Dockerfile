@@ -37,6 +37,7 @@ RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-mapper-a
 RUN /srv/elasticsearch/bin/plugin --install elasticsearch-river-mongodb --url https://github.com/NicolasTr/elasticsearch-river-mongodb/releases/download/2.0.0-kazoup/elasticsearch-river-mongodb-2.0.0-kazoup-4.zip
 RUN /srv/elasticsearch/bin/plugin --install mobz/elasticsearch-head
 RUN /srv/elasticsearch/bin/plugin --install lukas-vlcek/bigdesk
+RUN /srv/elasticsearch/bin/plugin --install com.yakaz.elasticsearch.plugins/elasticsearch-action-updatebyquery/1.6.1
 ADD docker/elasticsearch.yml /srv/elasticsearch/config/
 
 RUN mkdir -p /data/elasticsearch
