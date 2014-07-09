@@ -5,7 +5,8 @@
 ulimit -n 65535
 
 # We give to elasticsearch half the memory of the system
-TOTAL_MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+SIZE_CONVERTER="print int(raw_input()) * 1000**int(['bytes','KB','MB','GB','TB','PB','EB','ZB','YB'].index(raw_input().upper()))"
+TOTAL_MEMORY=$(grep MemTotal /proc/meminfo | grep kB | awk '{print $2}{print $3}' | python -c "${SIZE_CONVERTER}")
 HALF_MEMORY=$(( ${TOTAL_MEMORY} / 2 ))
 export ES_HEAP_SIZE=${HALF_MEMORY}
 
