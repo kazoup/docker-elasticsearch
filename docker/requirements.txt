@@ -1,2 +1,0 @@
-mongoengine==0.8.7
-django-getenv==1.1
