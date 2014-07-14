@@ -17,6 +17,4 @@ export ES_HEAP_SIZE=$(( ${ES_HEAP_SIZE} > ${MAX_MEMORY} ? ${MAX_MEMORY} : ${ES_H
 MIN_MEMORY=1500000000
 export ES_HEAP_SIZE=$(( ${ES_HEAP_SIZE} > ${MIN_MEMORY} ? ${ES_HEAP_SIZE} : ${MIN_MEMORY} ))
 
-/srv/kazoup/lifecycle/wait_for_mongo_primary.py 2>&1
-
 exec /srv/elasticsearch/bin/elasticsearch -Des.max-open-files=true 2>&1
