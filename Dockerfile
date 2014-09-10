@@ -28,6 +28,7 @@ RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-mapper-a
 RUN /srv/elasticsearch/bin/plugin --install mobz/elasticsearch-head
 RUN /srv/elasticsearch/bin/plugin --install lukas-vlcek/bigdesk
 RUN /srv/elasticsearch/bin/plugin --install com.yakaz.elasticsearch.plugins/elasticsearch-action-updatebyquery/1.6.1
+RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-cloud-aws/2.0.0
 ADD docker/elasticsearch.yml /srv/elasticsearch/config/
 
 RUN mkdir -p /data/elasticsearch
