@@ -19,16 +19,16 @@ RUN cat /tmp/id_rsa.kazoup_dev.pub >> /root/.ssh/authorized_keys && rm -f /tmp/i
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 RUN cd /srv \
-    && wget -O elasticsearch.tgz https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.tar.gz \
+    && wget -O elasticsearch.tgz https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.tar.gz \
     && tar zxf elasticsearch.tgz \
-    && mv /srv/elasticsearch-1.0.1 /srv/elasticsearch \
+    && mv /srv/elasticsearch-1.1.0 /srv/elasticsearch \
     && rm -rf /srv/*.tgz
 
-RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-mapper-attachments/2.0.0.RC1
+RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-mapper-attachments/2.0.0
 RUN /srv/elasticsearch/bin/plugin --install mobz/elasticsearch-head
 RUN /srv/elasticsearch/bin/plugin --install lukas-vlcek/bigdesk
-RUN /srv/elasticsearch/bin/plugin --install com.yakaz.elasticsearch.plugins/elasticsearch-action-updatebyquery/1.6.1
-RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-cloud-aws/2.0.0
+RUN /srv/elasticsearch/bin/plugin --install com.yakaz.elasticsearch.plugins/elasticsearch-action-updatebyquery/2.0.1
+RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-cloud-aws/2.1.1
 ADD docker/elasticsearch.yml /srv/elasticsearch/config/
 
 RUN mkdir -p /data/elasticsearch
