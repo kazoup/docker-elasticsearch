@@ -29,6 +29,12 @@ RUN /srv/elasticsearch/bin/plugin --install mobz/elasticsearch-head
 RUN /srv/elasticsearch/bin/plugin --install lukas-vlcek/bigdesk
 RUN /srv/elasticsearch/bin/plugin --install com.yakaz.elasticsearch.plugins/elasticsearch-action-updatebyquery/2.0.1
 RUN /srv/elasticsearch/bin/plugin --install elasticsearch/elasticsearch-cloud-aws/2.1.1
+
+# Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7
+# => To use AES > 128
+ADD docker/local_policy.jar /usr/lib/jvm/java-7-oracle/jre/lib/security/local_policy.jar
+ADD docker/US_export_policy.jar /usr/lib/jvm/java-7-oracle/jre/lib/security/US_export_policy.jar
+
 ADD docker/elasticsearch.yml /srv/elasticsearch/config/
 
 RUN mkdir -p /data/elasticsearch
